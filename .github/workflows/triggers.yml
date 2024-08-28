@@ -1,0 +1,19 @@
+name: Triggers
+run-name: Prueba de triggers
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  issues:
+
+jobs:
+  greet-aportation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Saludar usuario
+        run: echo "Hola ${{ github.actor }}! Gracias por aportar"
