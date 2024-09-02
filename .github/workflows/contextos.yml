@@ -1,0 +1,17 @@
+name: contexto
+run-name: prueba de contexto
+
+on: pull_request
+jobs:
+  greet-user:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obtener el nombre de la rama
+        run: echo "BRANCH_NAME=${{github.ref}}" >> $GITHUB_ENV
+        id: get-branch
+      - name: rama-main
+        if: ${{ github.BRANCH_NAME == 'main' }}
+        run: echo "Hola ${{github.actor}}! Deberias hacer el PR en una rama diferente."
+      - name: rama-no-main
+        if: ${{ github.BRANCH_NAME != 'main' }}
+        run: echo "Hola ${{github.actor}}! Verifica cumplir todos los check boxs."
