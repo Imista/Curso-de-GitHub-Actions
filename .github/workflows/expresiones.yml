@@ -1,0 +1,22 @@
+name: Expresiones
+run-name: Prueba de Expresiones
+
+on:
+  workflow_dispatch:
+
+jobs:
+  greet-or-scold:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Obtener día de la semana
+        id: get-day
+        run: echo "DIA_DE_LA_SEMANA=$(date +%u)" >> $GITHUB_ENV
+
+      - name: Saludar si es de lunes a viernes
+        if: ${{ env.DIA_DE_LA_SEMANA <= 5 }}
+        run: echo "¡Hola, ${{ github.actor }}! Espero que tengas un buen día de trabajo."
+
+      - name: Recordatorio de descanso si es sábado o domingo
+        if: ${{ env.DIA_DE_LA_SEMANA > 5 }}
+        run: echo "¡Hola, ${{ github.actor }}! Recuerda que es fin de semana. Tómate un descanso y disfruta."
