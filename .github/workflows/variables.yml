@@ -12,4 +12,4 @@ jobs:
             - name: Correr tests
               run: echo "Corriendo test..."
             - name: Guardar logs
-              run: echo 'Logs guardados en [$OUTPUT_DIR]'
+              run: echo 'Logs guardados en [${{env.OUTPUT_DIR}}]'
