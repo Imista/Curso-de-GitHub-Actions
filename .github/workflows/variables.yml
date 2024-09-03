@@ -1,0 +1,15 @@
+name: variables
+run-name: Aprendiendo variables
+
+on: pull_request
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        env:
+            OUTPUT_DIR: "./logs"
+        steps:
+            - name: Correr tests
+              run: echo "Corriendo test..."
+            - name: Guardar logs
+              run: echo 'Logs guardados en [${{env.OUTPUT_DIR}}]'
